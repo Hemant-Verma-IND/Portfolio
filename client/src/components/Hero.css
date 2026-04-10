@@ -1,0 +1,218 @@
+/* --- src/components/Hero.css --- */
+.hero-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  padding: 0 1.5rem;
+}
+
+/* 🟢 Blinking Status Dot */
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--glass-border);
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--neon-green);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--neon-green);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(57, 255, 20, 0.4); }
+  70% { box-shadow: 0 0 0 6px rgba(57, 255, 20, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(57, 255, 20, 0); }
+}
+
+/* Huge Gradient Text */
+.hero-title {
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 0;
+  display: flex;
+  gap: clamp(1rem, 3vw, 2rem);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.char-wrap {
+  display: inline-block;
+  overflow: hidden;
+}
+
+/* Background Clip trick for SDE level Text */
+.gradient-text {
+  background: linear-gradient(to right, var(--text-primary) 30%, var(--neon-cyan), var(--neon-green));
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradientFlow 8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes gradientFlow {
+  to { background-position: 200% center; }
+}
+
+.hero-subtitle {
+  margin-top: 1.5rem;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--text-muted);
+  max-width: 600px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* SDE Glowing Button */
+.cta-group {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.primary-btn {
+  background: var(--text-primary);
+  color: var(--bg-deep);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+}
+
+.secondary-btn {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
+}
+.secondary-btn:hover {
+  background: rgba(0, 240, 255, 0.1);
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+}
+/* --- src/components/Hero.css FIX --- */
+/* --- Optimized Responsive Social Dock --- */
+/* --- HERO.CSS (Social Dock Grid Reset) --- */
+/* --- HERO.CSS FINAL STYLING (REPLACING DUPLICATES) --- */
+
+/* 1. Main Container Layout */
+.social-dock {
+  display: grid !important; 
+  /* Desktop: One row of 4 */
+  grid-template-columns: repeat(4, auto); 
+  gap: 1.2rem;
+  margin: 2rem auto;
+  max-width: fit-content;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+/* 2. Base Icon Styles */
+.social-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  color: #a0aec0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none;
+}
+
+.social-link svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+/* 3. Hover Interactions */
+.social-link:hover {
+  transform: translateY(-8px) scale(1.1);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+/* 4. Tooltip System */
+.tooltip {
+  position: absolute;
+  bottom: -40px; /* Positions below the icon */
+  background: var(--neon-cyan);
+  color: #000;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.social-link:hover .tooltip {
+  opacity: 1;
+  bottom: -45px;
+}
+
+/* 5. ⚡️ THE MOBILE FIX: Grid of Two ⚡️ */
+/* Use ONLY one media query here to avoid conflicts */
+@media (max-width: 600px) {
+  .social-dock {
+    /* Explicitly force 2 icons per row */
+    grid-template-columns: repeat(2, 65px) !important;
+    grid-template-rows: repeat(2, auto) !important;
+    gap: 1.5rem 1rem; /* Increase vertical gap */
+    margin: 1.5rem auto;
+    
+    /* Absolute center logic */
+    display: grid !important;
+    justify-content: center !important;
+  }
+  
+  .social-link {
+    width: 65px;
+    height: 65px;
+  }
+  
+  /* Prevent title/text from affecting dock centering */
+  .hero-container {
+    padding: 0 1rem;
+    align-items: center;
+  }
+}

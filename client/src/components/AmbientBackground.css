@@ -1,0 +1,60 @@
+/* --- src/components/AmbientBackground.css --- */
+.ambient-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--bg-deep);
+}
+
+.blob {
+  position: absolute;
+  filter: blur(90px); /* This is the secret to the Spatial UI mesh look */
+  opacity: 0.5;
+  border-radius: 50%;
+  animation: float 20s infinite ease-in-out alternate;
+}
+
+.blob-cyan {
+  top: -10%;
+  left: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.4) 0%, transparent 70%);
+  animation-delay: 0s;
+}
+
+.blob-green {
+  bottom: -20%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(57, 255, 20, 0.25) 0%, transparent 70%);
+  animation-delay: -5s;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(5vw, 10vh) scale(1.1);
+  }
+  100% {
+    transform: translate(-5vw, -5vh) scale(0.9);
+  }
+}
+
+.glass-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Creates a subtle noise/grid over the blurry blobs to make it look physical */
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}

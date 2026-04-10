@@ -1,0 +1,241 @@
+/* --- src/components/BentoGrid.css --- */
+.bento-section {
+  padding: 5rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.section-header {
+  margin-bottom: 3rem;
+}
+.section-subtitle {
+  color: var(--neon-cyan);
+  font-family: monospace;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+/* --- Core Bento Mechanics --- */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 220px;
+  gap: 1.2rem;
+}
+
+.bento-card {
+  position: relative;
+  border-radius: 24px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Glass & Neon combination */
+.bento-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px; /* border thickness */
+  background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(0, 240, 255, 0.05), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.bento-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Sizes based on Importance --- */
+.card-stats { grid-column: span 2; grid-row: span 2; } /* Leetcode & Codeforces (Massive focus) */
+.card-crypto { grid-column: span 2; grid-row: span 1; } /* Stanford Crypto */
+.card-game { grid-column: span 1; grid-row: span 1; } /* Stanford Game Theory */
+.card-yale { grid-column: span 1; grid-row: span 1; } /* Yale Well-being */
+
+/* Inner Card Typography */
+.bento-icon {
+  margin-bottom: auto; /* Pushes content down */
+  color: var(--neon-cyan);
+}
+.uni-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: rgba(255,255,255,0.05);
+  padding: 0.4rem 0.8rem;
+  border-radius: 50px;
+  letter-spacing: 1px;
+}
+
+.bento-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.bento-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* The Core Stats Component Styles */
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--neon-green);
+  font-family: monospace;
+}
+.stat-label {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Responsive constraints */
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+  }
+  .card-game { grid-column: span 1; }
+  .card-yale { grid-column: span 1; }
+}
+@media (max-width: 640px) {
+  .bento-grid { display: flex; flex-direction: column; }
+}
+
+
+/* Style for the clickable card wrapper */
+.bento-card-link {
+  text-decoration: none;
+  display: block;
+}
+/* This nested selector is needed because the 'a' tag is outside the card div */
+.bento-card-link .bento-card {
+  height: 100%;
+}
+
+/* The sleek 'external link' icon that appears on hover */
+.bento-link-icon {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  color: var(--text-muted);
+  opacity: 0;
+  transform: translate(5px, -5px);
+  transition: all 0.3s var(--easing-spring);
+}
+.bento-card:hover .bento-link-icon {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Hide the university badge on hover to make space for the link icon */
+.bento-card:hover .badge-container {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* Styles for the individual links in the large stats box */
+.stats-container {
+  margin-top: 1.5rem;
+  background: rgba(0,0,0,0.3);
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.stat-row-link {
+  text-decoration: none;
+  display: block;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+.stat-row-link:hover {
+  background-color: rgba(255,255,255,0.03);
+}
+
+/* We need to apply the border to the link wrapper now, not the inner div */
+.stat-row-link .stat-row {
+  padding: 1rem 0;
+  margin: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.stat-row-link:last-of-type .stat-row {
+  border-bottom: none;
+}
+
+.card-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+.laser-line {
+  background: linear-gradient(to bottom, 
+    transparent 45%, 
+    rgba(255, 77, 77, 0.333) 50%, 
+    transparent 55%
+  );
+  background-size: 100% 200%;
+  animation: laserScan 4s linear infinite;
+}
+
+@keyframes laserScan {
+  from { background-position: 0 -100%; }
+  to { background-position: 0 100%; }
+}
+
+.binary-code {
+  font-family: monospace;
+  font-size: 4rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(187, 255, 77, 0.333);
+  letter-spacing: 10px;
+  animation: floatBinary 6s ease-in-out infinite;
+}
+
+@keyframes floatBinary {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+.radial-pulse {
+  background: radial-gradient(circle at center, 
+    rgba(51, 160, 255, 0.333) 0%, 
+    transparent 70%
+  );
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(0.8); opacity: 0.2; }
+  50% { transform: scale(1.2); opacity: 0.5; }
+}

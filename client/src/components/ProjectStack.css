@@ -1,0 +1,151 @@
+/* --- src/components/ProjectStack.css --- */
+.projects-section {
+  padding: 8rem 1.5rem 10rem 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  /* Required for the sticky logic to flow down the entire height */
+  position: relative;
+}
+
+.projects-stack-container {
+  display: flex;
+  flex-direction: column;
+  /* Massive gap so you have to scroll to reach the next card */
+  gap: 15vh; 
+  padding-top: 2rem;
+}
+
+/* SDE Magic: Sticky overlap trick */
+.project-card {
+  position: sticky;
+  top: 15vh; /* This dictates where it locks on screen */
+  border-radius: 24px;
+  display: flex;
+  min-height: 60vh;
+  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.4);
+  transform-origin: top center;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.card-content-wrapper {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  background: var(--bg-surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.project-year {
+  font-family: monospace;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-title {
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.project-desc {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 90%;
+  margin-bottom: 2rem;
+}
+
+.tech-stack-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: auto;
+}
+
+.tech-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.project-links {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.action-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+/* --- Project Themes --- */
+
+/* Project 1: Blue AI Node */
+#proj-0 { top: 12vh; border-top: 1px solid rgba(0, 240, 255, 0.4); }
+#proj-0 .action-link { color: var(--neon-cyan); }
+#proj-0 .action-link:hover { border-bottom-color: var(--neon-cyan); }
+
+/* Project 2: Green Trophy Hackathon */
+#proj-1 { top: 15vh; border-top: 1px solid rgba(57, 255, 20, 0.4); }
+#proj-1 .action-link { color: var(--neon-green); }
+#proj-1 .action-link:hover { border-bottom-color: var(--neon-green); }
+
+/* Project 3: Purple Algorithmic Vault */
+#proj-2 { top: 18vh; border-top: 1px solid rgba(177, 0, 255, 0.4); }
+#proj-2 .action-link { color: #B100FF; }
+#proj-2 .action-link:hover { border-bottom-color: #B100FF; }
+
+
+/* Custom Graphical Side */
+.project-visual {
+  flex: 1;
+  border-left: 1px solid var(--glass-border);
+  position: relative;
+  overflow: hidden;
+  display: none; /* Hide on mobile to save space */
+  align-items: center;
+  justify-content: center;
+}
+
+.visual-hologram {
+  width: 70%;
+  height: 70%;
+  background-image: radial-gradient(var(--text-primary) 1px, transparent 1px);
+  background-size: 10px 10px;
+  opacity: 0.2;
+  transform: rotateX(45deg) rotateZ(45deg);
+  perspective: 1000px;
+}
+
+/* Breakpoint for Mobile & Tablets */
+@media (min-width: 900px) {
+  .project-visual { display: flex; }
+}
+
+@media (max-width: 768px) {
+  .projects-section { padding: 4rem 1rem; }
+  .card-content-wrapper { padding: 2rem; }
+  .projects-stack-container { gap: 10vh; }
+  .project-card { top: 15vh !important; /* Stack cleanly exactly on same pixel for mobile */ }
+}
