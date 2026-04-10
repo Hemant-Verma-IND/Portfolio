@@ -32,10 +32,7 @@ const BentoGrid = () => {
             <a href="https://leetcode.com/u/Hemant_Verma_ind/" target="_blank" rel="noreferrer" className="stat-row-link">
                 <div className="stat-row"><span className="stat-label">LeetCode Matrix</span><span className="stat-value">450+ Solved (DSA)</span></div>
             </a>
-            <a href="https://leetcode.com/u/Hemant_Verma_ind/" target="_blank" rel="noreferrer" className="stat-row-link">
-                <div className="stat-row"><span className="stat-label">LeetCode Matrix</span><span className="stat-value">450+ Solved (DSA)</span></div>
-            </a>
-            <div className="stat-row"><span className="stat-label">GATE 2026 <br /> CS & IT</span><span className="stat-value" style={{ color: 'white' }}>SCORE 524 <br /> (AIR 6123)</span></div>
+            <div className="stat-row"><span className="stat-label">GATE 2026 <br /> CS & IT</span><span className="stat-value" style={{ color: 'white' }}>SCORE 524</span></div>
           </div>
         </motion.div>
 
