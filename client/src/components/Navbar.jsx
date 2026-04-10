@@ -18,9 +18,9 @@ const Navbar = () => {
         </div>
         
         <div className="nav-links">
-          <a href="#stats" className="nav-link">Logic.Engine</a>
-          <a href="#projects" className="nav-link">Projects</a>
-          <a href="#certs" className="nav-link">Ivy.League.Certs</a>
+          {/* <a href="#stats" className="nav-link">Logic.Engine</a> */}
+          <a href="/" className="nav-link">Home</a>
+          <a href="https://iapss.vercel.app/" className="nav-link">Go to IAPSS</a>
         </div>
       </motion.nav>
     </div>

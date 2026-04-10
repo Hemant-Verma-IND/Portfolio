@@ -11,7 +11,7 @@ const PROJECT_DATA = [
     year: "Oct 2025",
     desc: "A modular client-server full-stack application architected with stateless APIs. Bypasses direct solution dumping to analyze user code flow via Gemini Pro APIs. Engineered an air-tight Security-by-Boundary model using JWT token handshakes.",
     stack: ["React", "Node.js", "Express", "MongoDB", "Gemini API"],
-    links: { github: "#", web: "#" },
+    links: { github: "https://github.com/Hemant-Verma-IND/iapssfinal", web: "https://iapss.vercel.app/" },
     icon: <Cpu size={16} />
   },
   {
@@ -19,7 +19,7 @@ const PROJECT_DATA = [
     year: "1st Place Winner",
     desc: "Won 1st Prize over 25+ teams in the NITR Cohort Hackathon. Built a scalable NLP travel module leveraging TS and real-time state regeneration for dynamic user pathing.",
     stack: ["React", "TypeScript", "Node.js", "Gen-AI Engine"],
-    links: { github: "#", web: "#" },
+    links: { github: "https://github.com/Hemant-Verma-IND/Om-Tours-Frontend", web: "https://om-tours-iota.vercel.app/" },
     icon: <Trophy size={16} />
   },
   {
@@ -27,7 +27,7 @@ const PROJECT_DATA = [
     year: "Knowledge Hub",
     desc: "Personal matrix of 450+ optimized algorithms and hands-on implementations for mitigating common vulnerabilities like XSS/SQLi, applying security principles from institutional training.", // Description updated
     stack: ["C++", "Vulnerability Scans", "XSS/SQLi Mitigation", "Advanced DSA"], // Stack updated
-    links: { github: "#" },
+    links: { github: "https://github.com/sidharthaxy/PRIME" },
     icon: <Terminal size={16} />
   }
 ];

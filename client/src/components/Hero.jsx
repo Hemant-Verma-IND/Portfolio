@@ -35,9 +35,9 @@ const Hero = () => {
 
   return (
     <section className="hero-container">
-      <motion.div className="status-pill" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.1, duration: 0.5 }}>
+      {/* <motion.div className="status-pill" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.1, duration: 0.5 }}>
         <span className="pulse-dot"></span> Full-Stack SDE Portfolio Initialized
-      </motion.div>
+      </motion.div> */}
 
       <motion.h1 className="hero-title" variants={container} initial="hidden" animate="visible">
         <div className="char-wrap">{firstName.map((char, i) => <motion.span key={i} variants={letterAnim} className="gradient-text">{char}</motion.span>)}</div>
@@ -76,7 +76,7 @@ I am an Electrical Engineering undergraduate at NIT Rourkela, focused on <span s
       </motion.div>
 
       <motion.div className="cta-group" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.9, duration: 0.8 }}>
-        <button className="primary-btn">Initialize Connection</button>
+        <a href="mailto:hemantverma.nitr@gmail.com"><button className="primary-btn">Initialize Connection</button></a>
         <a href="#metrics" style={{ textDecoration: 'none' }}><button className="secondary-btn">View Algorithm DB</button></a>
       </motion.div>
     </section>
