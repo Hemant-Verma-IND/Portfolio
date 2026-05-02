@@ -27,8 +27,8 @@ const PROJECT_DATA = [
     year: "Knowledge Hub",
     desc: "Personal matrix of 450+ optimized algorithms and hands-on implementations for mitigating common vulnerabilities like XSS/SQLi, applying security principles from institutional training.", // Description updated
     stack: ["C++", "Vulnerability Scans", "XSS/SQLi Mitigation", "Advanced DSA"], // Stack updated
-    links: { github: "https://github.com/sidharthaxy/PRIME" },
-    icon: <Terminal size={16} />
+    // links: { github: "https://github.com/sidharthaxy/PRIME" },
+    // icon: <Terminal size={16} />
   }
 ];
 
