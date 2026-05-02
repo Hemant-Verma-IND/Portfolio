@@ -1,0 +1,80 @@
+/* --- src/components/PrimeTeaser.css --- */
+.prime-teaser-section {
+  position: relative; /* FIXES THE CONSOLE WARNING */
+  width: 100%;
+  padding: 120px 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers content horizontally */
+  justify-content: center;
+  text-align: center; /* Centers text */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: #02050e;
+}
+
+.prime-glow-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 400px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.prime-teaser-content {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.prime-teaser-title {
+  font-family: 'Orbitron', 'BankGothic', sans-serif; /* Industrial look */
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: 0.15em;
+  margin-bottom: 20px;
+  /* Gradient metal text effect */
+  background: linear-gradient(to bottom, #ffffff 40%, #475569 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+}
+
+.prime-teaser-description {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  max-width: 700px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.prime-explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 48px;
+  background: #ffffff;
+  color: #000000;
+  font-weight: 700;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 0.4s var(--easing-spring);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.prime-explore-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.4);
+}

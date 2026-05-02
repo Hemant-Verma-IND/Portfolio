@@ -182,3 +182,85 @@
     border-right-color: var(--border);
   }
 }
+
+/* --- Add to the bottom of src/pages/PRIMEProject.css --- */
+
+/* DOCUMENTATION MODAL OVERLAY */
+.prime-doc-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(2, 4, 10, 0.85); /* Dark SDE Theme Backdrop */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+/* Modal Window */
+.prime-doc-modal {
+  width: 100%;
+  max-width: 1000px;
+  height: 90vh;
+  background: #0f1523; /* Dark modal background */
+  border-radius: 16px;
+  border: 1px solid rgba(0, 240, 255, 0.2); /* Neon cyan border tie-in */
+  box-shadow: 0 30px 100px rgba(0,0,0,0.9);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Modal Header Bar */
+.prime-doc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: #050814;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.prime-doc-title {
+  color: #fff;
+  font-family: monospace;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: 1px;
+}
+
+.prime-doc-close {
+  background: rgba(239, 68, 68, 0.1); /* Subtle red for close */
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: monospace;
+}
+.prime-doc-close:hover {
+  background: #ef4444;
+  color: #fff;
+}
+
+/* The actual PDF viewer container */
+.prime-doc-viewer {
+  flex-grow: 1;
+  width: 100%;
+  background: #fff; /* White background behind the actual paper */
+}
+
+/* Mobile Adjustments for Modal */
+@media (max-width: 768px) {
+  .prime-doc-overlay { padding: 10px; }
+  .prime-doc-modal { height: 95vh; }
+  .prime-doc-header { padding: 12px; }
+  .prime-doc-title span { display: none; } /* Hide long title text on phones */
+}

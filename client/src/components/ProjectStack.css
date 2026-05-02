@@ -15,17 +15,22 @@
   padding-top: 2rem;
 }
 
-/* SDE Magic: Sticky overlap trick */
+/* SDE Magic: Sticky overlap trick - VERCEL SAFE FIX */
 .project-card {
   position: sticky;
   top: 15vh; /* This dictates where it locks on screen */
   border-radius: 24px;
   display: flex;
   min-height: 60vh;
-  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.8); /* Stronger shadow blocks bottom bleed */
   transform-origin: top center;
   transition: transform 0.3s ease;
   overflow: hidden;
+  
+  /* ⚡️ VERCEL / SAFARI GLITCH FIXES ⚡️ */
+  background-color: #050814; 
+  isolation: isolate; /* Creates a new CSS stacking context to prevent Z-index bleeding */
+  will-change: transform; /* Forces GPU to cache this layer uniquely */
 }
 
 .card-content-wrapper {
@@ -34,9 +39,10 @@
   flex-direction: column;
   justify-content: center;
   flex: 1;
+  /* We maintain your Glassmorphism, but it sits ON TOP of the solid base color we added to .project-card */
   background: var(--bg-surface);
-  backdrop-filter: blur(50px);
-  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .project-year {
